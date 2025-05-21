@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     let books = [];
+    let top3Books = [];
     let currentIndex = 0;
     let filteredBooks = [];
 
@@ -14,33 +15,39 @@ document.addEventListener("DOMContentLoaded", function () {
         sortDropdown: document.getElementById('sortDropdown'),
         tagDropdown: document.getElementById('tagDropdown'),
         searchInput: document.getElementById('searchInput'),
-        bookGrid: document.getElementById('bookGrid')
+        bookGrid: document.getElementById('bookGrid'),
+        carouselContainer: document.querySelector('.carousel-container')
     };
 
-
-
     function updateCarousel() {
-        if (books.length === 0) return;
+        if (top3Books.length === 0) return;
 
-        const book = books[currentIndex];
+        const book = top3Books[currentIndex];
         const bookInfo = parseBookBody(book.body);
+
+        // Actualiza imagen y alt
         elements.carouselImage.src = book.media.url;
-        elements.carouselImage.alt = book.title;
+        elements.carouselImage.alt = "Cover of " + book.title;
 
-        let captionText = book.title;
-        if (bookInfo.synopsis) {
-            const shortText = bookInfo.synopsis.length > 300
-                ? bookInfo.synopsis.substring(0, 300) + "..."
-                : bookInfo.synopsis;
-            captionText += ": " + shortText;
-        } else if (bookInfo.author) {
-            captionText += " by " + bookInfo.author;
-        }
-
-        elements.carouselCaption.textContent = captionText;
+        // Actualiza caption
+        elements.carouselCaption.innerHTML = `
+            <div class="carousel-caption-content">
+                <h2>${book.title}</h2>
+                <p>${bookInfo.synopsis ? bookInfo.synopsis.substring(0, 300) + "..." : ""}</p>
+                <span class="read-more">READ MORE</span>
+            </div>
+        `;
 
         elements.carouselImage.style.display = "block";
         elements.carouselCaption.style.display = "block";
+
+        // Hacer toda el área del carrusel clicable (menos las flechas)
+        elements.carouselContainer.onclick = function (e) {
+            const isNavButton = e.target.classList.contains("nav-button");
+            if (!isNavButton) {
+                window.location.href = `book.html?id=${book.id}`;
+            }
+        };
     }
 
     function updateBookGrid() {
@@ -50,23 +57,21 @@ document.addEventListener("DOMContentLoaded", function () {
             const bookInfo = parseBookBody(book.body);
             const card = document.createElement('div');
             card.className = 'book-card';
-            card.style.cursor = "pointer"; 
+            card.style.cursor = "pointer";
             card.addEventListener('click', () => {
                 window.location.href = `book.html?id=${book.id}`;
             });
 
             card.innerHTML = `
-    <img class="book-image" src="${book.media.url}" alt="Cover of ${book.title}">
-<div class="book-info">
-    <h3 class="book-title">${book.title}</h3>
-    <p class="book-description">
-        ${bookInfo.synopsis ? bookInfo.synopsis : bookInfo.author ? `By ${bookInfo.author}` : book.tags.join(', ')}
-    </p>
-    <span class="read-more">READ MORE</span>
-</div>
-
-`;
-
+                <img class="book-image" src="${book.media.url}" alt="Cover of ${book.title}">
+                <div class="book-info">
+                    <h3 class="book-title">${book.title}</h3>
+                    <p class="book-description">
+                        ${bookInfo.synopsis ? bookInfo.synopsis : bookInfo.author ? `By ${bookInfo.author}` : book.tags.join(', ')}
+                    </p>
+                    <span class="read-more">READ MORE</span>
+                </div>
+            `;
 
             elements.bookGrid.appendChild(card);
         });
@@ -115,10 +120,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 const allData = data.data;
 
                 const sorted = [...allData].sort((a, b) => new Date(b.created) - new Date(a.created));
-                books = sorted.slice(0, 3);
-
-
-                filteredBooks = [...allData];
+                books = sorted;
+                top3Books = sorted.slice(0, 3);
+                filteredBooks = [...books];
 
                 const allTags = new Set();
                 allData.forEach(book => {
@@ -145,19 +149,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-
-
     elements.prevButton.addEventListener('click', function (e) {
         e.preventDefault();
-        if (books.length === 0) return;
-        currentIndex = (currentIndex - 1 + books.length) % books.length;
+        if (top3Books.length === 0) return;
+        currentIndex = (currentIndex - 1 + top3Books.length) % top3Books.length;
         updateCarousel();
     });
 
     elements.nextButton.addEventListener('click', function (e) {
         e.preventDefault();
-        if (books.length === 0) return;
-        currentIndex = (currentIndex + 1) % books.length;
+        if (top3Books.length === 0) return;
+        currentIndex = (currentIndex + 1) % top3Books.length;
         updateCarousel();
     });
 
@@ -166,7 +168,4 @@ document.addEventListener("DOMContentLoaded", function () {
     elements.searchInput.addEventListener('input', filterAndSortBooks);
 
     loadBooks();
-
-
-
 });
