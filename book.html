@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronicles of Maas - Throne of Glass</title>
+    <link rel="stylesheet" href="./styles/book.css">
+</head>
+
+<body>
+    <header class="header" role="banner">
+        <img src="images/logo.png" class="logo" alt="Chronicles of Maas logo">
+        <nav class="nav" role="navigation">
+            <a href="./index.html">Home</a> |
+            <a href="#">Blog</a> |
+            <a id="nav-login" href="./login.html">Login</a> |
+            <a id="nav-register" href="./register.html">Register</a> |
+            <a id="nav-logout" href="">Logout</a>
+        </nav>
+    </header>
+
+    <main class="main-content" role="main">
+        <div class="book-image">
+            <img id="book-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                alt="Cover of the current book">
+        </div>
+
+        <div class="book-info">
+            <h1 id="book-title" class="book-title">Loading title...</h1>
+
+            <div id="book-description" class="book-description"></div>
+
+            <div class="book-themes">
+                <h2 class="theme-title">Themes:</h2>
+                <ul id="theme-list" class="theme-list"></ul>
+            </div>
+
+            <div class="book-meta">
+                <p><span class="meta-label">Author:</span> <span id="book-author"></span></p>
+                <p><span class="meta-label">Series:</span> <span id="book-series"></span></p>
+                <p><span class="meta-label">Publication Date:</span> <span id="book-date"></span></p>
+            </div>
+
+            <div class="actions">
+                <button class="action-button" id="share-button" aria-label="Share this book">
+                    Share
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <circle cx="18" cy="5" r="3"></circle>
+                        <circle cx="6" cy="12" r="3"></circle>
+                        <circle cx="18" cy="19" r="3"></circle>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                    </svg>
+                </button>
+
+                <button class="action-button" id="delete-book">Delete Book</button>
+                <button class="action-button" id="edit-form">Edit book</button>
+            </div>
+        </div>
+    </main>
+
+   <footer class="footer">
+        <div class="social-icons">
+            <a href="#" class="social-icon">
+                <img src="images/facebook-icon.png" alt="Facebook icon">
+            </a>
+            <a href="#" class="social-icon">
+                <img src="images/instagram-icon.png" alt="Instagram icon">
+            </a>
+            <a href="#" class="social-icon">
+                <img src="images/twitter-icon.png" alt="Twitter icon">
+            </a>
+        </div>
+        <div class="copyright">
+            © 2025 Chronicles Of Maas All rights reserved.
+        </div>
+        <div class="footer-text">
+            Designed for educational purposes. Inspired by the works of Sarah J. Maas.
+        </div>
+    </footer>
+
+    <script src="./js/isLogged.js"></script>
+    <script src="./js/functions.js"></script>
+    <script src="./js/book.js"></script>
+    <script>
+        const accessToken = localStorage.getItem("accessToken");
+        const editBookBtn = document.getElementById("edit-form");
+
+        if (accessToken) {
+            if (editBookBtn) editBookBtn.style.display = "inline-block";
+        } else {
+            if (editBookBtn) editBookBtn.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

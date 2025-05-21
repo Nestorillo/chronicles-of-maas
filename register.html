@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Chronicles of Maas</title>
+    <link rel="stylesheet" href="./styles/register.css">
+</head>
+
+<body>
+    <div class="header">
+        <a href="./index.html">
+            <img src="images/logo.png" class="logo" alt="logo">
+        </a>
+        <div class="nav">
+            <a href="./index.html">Home</a> |
+            <a href="#">Blog</a> |
+            <a id="nav-login" href="./login.html">Login</a> |
+            <a id="nav-register" href="./register.html">Register</a> |
+            <a id="nav-logout" href="">Logout</a>
+        </div>
+    </div>
+
+    <div class="register-container">
+        <h1 class="register-title">Register</h1>
+
+        <div class="register-form-layout">
+            <div class="logo-left">
+                <img src="images/logo.png" alt="Chronicles of Maas logo" class="side-logo">
+            </div>
+
+            <div class="register-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-input" placeholder="Enter your full name" required>
+                    <div class="form-note">Must contain only letters, numbers, and underscore</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-input" placeholder="Enter your email address" required>
+                    <div class="form-note">Must be a noroff.no email address</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-input" placeholder="Create a password" required>
+                    <div class="form-note">Minimum 8 characters</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="bio">Bio</label>
+                    <textarea id="bio" class="form-input text-area" placeholder="Tell us about yourself"
+                        rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="avatarUrl">Avatar Image URL</label>
+                    <input type="url" id="avatarUrl" class="form-input" placeholder="https://example.com/image.jpg">
+                    <div class="form-note">Optional: Enter a valid image URL</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="avatarAlt">Avatar Image Alt Text</label>
+                    <input type="text" id="avatarAlt" class="form-input"
+                        placeholder="Brief description of avatar image">
+                </div>
+
+                <div class="form-group">
+                    <label for="bannerUrl">Banner Image URL</label>
+                    <input type="url" id="bannerUrl" class="form-input" placeholder="https://example.com/banner.jpg">
+                    <div class="form-note">Optional: Enter a valid image URL</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="bannerAlt">Banner Image Alt Text</label>
+                    <input type="text" id="bannerAlt" class="form-input"
+                        placeholder="Brief description of banner image">
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="venueManager" class="checkbox-input">
+                    <label for="venueManager" class="checkbox-label">Register as Venue Manager</label>
+                </div>
+
+
+                <div class="response-message" id="responseMessage"></div>
+
+                <button type="submit" class="register-button">REGISTER</button>
+
+                <div class="form-links">
+                    <a href="./login.html" class="login-link">Already have an account? Login here</a>
+                </div>
+            </div>
+
+            <div class="logo-right">
+                <img src="images/logo.png" alt="Chronicles of Maas logo" class="side-logo">
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#" class="social-icon">
+                <img src="images/facebook-icon.png" alt="Facebook">
+            </a>
+            <a href="#" class="social-icon">
+                <img src="images/instagram-icon.png" alt="Instagram">
+            </a>
+            <a href="#" class="social-icon">
+                <img src="images/twitter-icon.png" alt="Twitter">
+            </a>
+        </div>
+        <div class="copyright">
+            © 2025 Chronicles Of Maas All rights reserved.
+        </div>
+        <div class="footer-text">
+            Designed for educational purposes. Inspired by the works of Sarah J. Maas.
+        </div>
+    </footer>
+
+    <script src="./js/isLogged.js"></script>
+    <script src="./js/register.js"></script>
+</body>
+
+</html>

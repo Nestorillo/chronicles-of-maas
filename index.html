@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description" content="Fan blog about Sarah J. Maas' fantasy books. Explore summaries and magical worlds.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronicles of Maas</title>
+    <link rel="stylesheet" href="./styles/home.css">
+    <style>
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 10px;
+                gap: 10px;
+            }
+            .nav {
+                width: 100%;
+                justify-content: center;
+            }
+            .filter-section {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            .filter-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            .filter-dropdown, .search-box {
+                width: 90%;
+            }
+        }
+
+        /* REVISAR contraste de texto en CSS externo si se usa gris claro o texto sobre fondos */
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="images/logo.png" class="logo" alt="Chronicles of Maas logo">
+        <div class="nav">
+            <a href="#">Home</a> | 
+            <a href="#">Blog</a> | 
+            <a id="nav-login" href="./login.html">Login</a> | 
+            <a id="nav-register" href="./register.html">Register</a> |
+            <a id="nav-logout" href="">Logout</a>
+        </div>
+    </div>
+    
+    <div class="main-title"><h1>CHRONICLES OF MAAS</h1></div>
+    <div class="subtitle">Your Guide to Magical Realms and Epic Stories</div>
+    
+    <div class="carousel-container">
+        <div id="loading" class="loading">Loading books...</div>
+        <div id="error" class="error" style="display: none;">Error loading books. Please try again later.</div>
+
+        <img class="carousel-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Fantasy scene with character and castle" style="display: none;">
+
+        <div class="carousel-caption" style="display: none;">
+            Loading...
+        </div>
+        <div class="carousel-nav">
+            <a href="#" class="nav-button">&#10094;</a>
+            <a href="#" class="nav-button">&#10095;</a>
+        </div>
+    </div>
+    
+    <div class="blog-section"><h2>BLOG POST</h2></div>
+    
+    <div class="filter-section">
+        <label for="sortDropdown" class="visually-hidden">Sort posts</label>
+        <select class="filter-dropdown" id="sortDropdown">
+            <option value="latest">Latest</option>
+            <option value="oldest">Oldest</option>
+            <option value="titleAsc">Title (A-Z)</option>
+            <option value="titleDesc">Title (Z-A)</option>
+        </select>
+        
+        <label for="tagDropdown" class="visually-hidden">Filter by tag</label>
+        <select class="filter-dropdown" id="tagDropdown">
+            <option value="all">All Tags</option>
+        </select>
+        
+        <label for="searchInput" class="visually-hidden">Search by title</label>
+        <input type="text" class="search-box" id="searchInput" placeholder="Search by title...">
+    </div>
+
+    <div class="book-grid" id="bookGrid"></div>
+
+    <div style="text-align: center;">
+        <a id="create-book-btn" href="./createBook.html" class="read-more">Create Book</a>
+    </div>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#" class="social-icon">
+                <img src="images/facebook-icon.png" alt="Facebook icon">
+            </a>
+            <a href="#" class="social-icon">
+                <img src="images/instagram-icon.png" alt="Instagram icon">
+            </a>
+            <a href="#" class="social-icon">
+                <img src="images/twitter-icon.png" alt="Twitter icon">
+            </a>
+        </div>
+        <div class="copyright">
+            © 2025 Chronicles Of Maas All rights reserved.
+        </div>
+        <div class="footer-text">
+            Designed for educational purposes. Inspired by the works of Sarah J. Maas.
+        </div>
+    </footer>
+
+    <script src="./js/isLogged.js"></script>
+    <script src="./js/functions.js"></script>
+    <script src="./js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronicles of Maas - Create New Book</title>
+    <link rel="stylesheet" href="./styles/createBook.css">
+</head>
+<body>
+    <div class="header">
+        <img src="images/logo.png" class="logo" alt="logo">
+        <div class="nav">
+            <a href="./index.html">Home</a> | 
+            <a href="#">Blog</a> | 
+            <a id="nav-login" href="./login.html">Login</a> | 
+            <a id="nav-register" href="./register.html">Register</a> |
+            <a id="nav-logout" href="">Logout</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h1>Create New Book</h1>
+        
+        <form id="create-form" method="post">
+            <div class="form-container">
+                <div class="form-header">
+                    Title
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Title</label>
+                    <input type="text" class="form-input" name="title" placeholder="Enter your book title" required>
+                </div>
+                
+                <div class="form-header">
+                    Book Series Information
+                </div>
+                <div class="form-group book-details">
+                    <div>
+                        <label class="form-label">Author</label>
+                        <input type="text" class="form-input" name="author" placeholder="Author name" value="Sarah J. Maas">
+                    </div>
+                    <div>
+                        <label class="form-label">Series</label>
+                        <input type="text" class="form-input" name="series" placeholder="Series name">
+                    </div>
+                    <div>
+                        <label class="form-label">Order in Series</label>
+                        <input type="number" class="form-input" name="order" placeholder="Book number in series">
+                        
+                    </div>
+                    <div>
+                        <label class="form-label">Publication Date</label>
+                        <input type="date" class="form-input" name="publication_date">
+                    </div>
+                </div>
+                
+                <div class="form-header">
+                    Themes
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Book Themes (separate with commas)</label>
+                    <textarea class="form-textarea" name="themes" style="min-height: 120px"></textarea>
+                </div>
+                
+                <div class="form-header">
+                    Synopsis
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Book Synopsis</label>
+                    <textarea class="form-textarea" name="synopsis" placeholder="Write your book synopsis here..."></textarea>
+                </div>
+                
+                <div class="form-header">
+                    Media Upload
+                </div>
+                <div class="form-group" style="text-align: center;">
+                    <label class="form-label">Cover Image</label>
+                    <div>
+                        <img src="https://m.media-amazon.com/images/I/81clfHCGRaL._AC_UF1000,1000_QL80_.jpg" alt="House of Flame and Shadow cover" class="image-preview">
+                    </div>
+
+                    <input type="hidden" value="https://m.media-amazon.com/images/I/81clfHCGRaL._AC_UF1000,1000_QL80_.jpg">
+                    <input type="text" class="form-input" name="image_alt" placeholder="Image description" style="margin: 10px 0;">
+                    <input type="text" name="image_url" class="form-input" placeholder="Image URL">Change Cover Image</button>
+                </div>
+                
+                <div class="form-header">
+                    Tags
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Add Tags (separate with commas)</label>
+                    <input type="text" class="form-input" name="tags" placeholder="fantasy, sarah j maas, crescent city">
+                    <div class="tags-container">
+                        <!-- Tags will appear here -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="submit-container">
+                <button type="submit" class="submit-btn">Publish Book</button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="footer">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <div class="footer-text">
+            © 2025 Chronicles Of Maas All rights reserved.
+        </div>
+        <div class="footer-text">
+            Designed for educational purposes. Inspired by the works of Sarah J. Maas.
+        </div>
+    </div>
+    
+    <script src="./js/isLogged.js"></script>
+    <script src="./js/canPass.js"></script>
+    <script src="./js/functions.js"></script>
+    <script src="./js/createBook.js"></script>
+</body>
+</html>
