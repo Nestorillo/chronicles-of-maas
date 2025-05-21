@@ -25,11 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const book = top3Books[currentIndex];
         const bookInfo = parseBookBody(book.body);
 
-        // Actualiza imagen y alt
         elements.carouselImage.src = book.media.url;
         elements.carouselImage.alt = "Cover of " + book.title;
-
-        // Actualiza caption
         elements.carouselCaption.innerHTML = `
             <div class="carousel-caption-content">
                 <h2>${book.title}</h2>
@@ -40,8 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         elements.carouselImage.style.display = "block";
         elements.carouselCaption.style.display = "block";
-
-        // Hacer toda el área del carrusel clicable (menos las flechas)
         elements.carouselContainer.onclick = function (e) {
             const isNavButton = e.target.classList.contains("nav-button");
             if (!isNavButton) {
